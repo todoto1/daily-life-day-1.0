@@ -18,7 +18,7 @@
       padding: 0;
       box-shadow: 0 8px 32px rgba(0,0,0,0.06);
       width: 100%;
-      max-width: 320px; /* 폭 줄임 */
+      max-width: 280px; /* 폭 줄임 */
       border: 1px solid rgba(0,0,0,0.04);
     }
 
@@ -151,20 +151,20 @@
       return { passedDays, totalDays, percentage, kst };
     }
 
-    function createDots() {
-      const { passedDays, totalDays } = calculateYearProgress();
-      const container = document.getElementById('dotsContainer');
-      container.innerHTML = "";
+function createDots() {
+  const { passedDays, totalDays } = calculateYearProgress();
+  const container = document.getElementById('dotsContainer');
+  container.innerHTML = "";
 
-      const totalDots = 36;
-      const passedDots = Math.round(totalDots * (passedDays / totalDays));
+  const totalDots = 30; // ✅ 6×5로 변경
+  const passedDots = Math.round(totalDots * (passedDays / totalDays));
 
-      for (let i = 0; i < totalDots; i++) {
-        const dot = document.createElement('div');
-        dot.className = 'dot' + (i < passedDots ? ' passed' : '');
-        container.appendChild(dot);
-      }
-    }
+  for (let i = 0; i < totalDots; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'dot' + (i < passedDots ? ' passed' : '');
+    container.appendChild(dot);
+  }
+}
 
     function updateDisplay() {
       const { passedDays, totalDays, percentage, kst } = calculateYearProgress();
